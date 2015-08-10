@@ -1,0 +1,36 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+    <context-param>
+        <param-name>file-upload</param-name>
+        <param-value>
+            /Applications/apache-tomcat-8.0.24/webapps/data/
+        </param-value>
+        <description>Location to store uploaded file</description>
+    </context-param>
+    <context-param>
+        <param-name>file-upload-temp</param-name>
+        <param-value>
+            /Applications/apache-tomcat-8.0.24/webapps/temp/
+        </param-value>
+        <description>Location to store uploaded file</description>
+    </context-param>
+    <context-param>
+        <param-name>image-home</param-name>
+        <param-value>
+            ../data/
+        </param-value>
+        <description>Location to store uploaded file</description>
+    </context-param>
+    <context-param>
+        <param-name>properties-file</param-name>
+        <param-value>
+            /Applications/apache-tomcat-8.0.24/webapps/umlsite/WEB-INF/lib/properties.properties
+        </param-value>
+        <description>Location of UMLS properties file</description>
+    </context-param>
+</web-app>
