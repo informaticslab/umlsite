@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<div class="top-nav"><div class="mmwr"><img src="mmwr-logo.png" width="179" height="49"></div><div class="cdc-logo"><img src="cdc.png"></div></div>
+<div class="top-nav"><div class="cdc-logo"><img src="cdc.png"></div></div>
 <div class="container">
 <h2>Term Entry</h2>
 <i>Enter a term with which to poke the UMLS Metathesaurus</i> <br /><br />
