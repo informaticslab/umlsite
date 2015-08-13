@@ -1,5 +1,5 @@
 # PPTGen
-An apache poi/tomcat/maven prototype for generating pptx from a website.
+An apache tomcat/maven prototype for accessing the UMLS Metathesaurus from a website.
 
 ## Goals
 To share the apps developed by Informatics Lab.
@@ -8,7 +8,6 @@ To share the apps developed by Informatics Lab.
 * Java 1.8
 * Apache Tomcat 8.0
 * Apache Maven 3.3
-* Apache POI 3.1
 
 ## Status and Roadmap
 Early Prototype, style updates and bug fixes as needed.
