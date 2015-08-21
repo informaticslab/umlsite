@@ -4,28 +4,6 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-
-    <context-param>
-        <param-name>file-upload</param-name>
-        <param-value>
-            /Applications/apache-tomcat-8.0.24/webapps/data/
-        </param-value>
-        <description>Location to store uploaded file</description>
-    </context-param>
-    <context-param>
-        <param-name>file-upload-temp</param-name>
-        <param-value>
-            /Applications/apache-tomcat-8.0.24/webapps/temp/
-        </param-value>
-        <description>Location to store uploaded file</description>
-    </context-param>
-    <context-param>
-        <param-name>image-home</param-name>
-        <param-value>
-            ../data/
-        </param-value>
-        <description>Location to store uploaded file</description>
-    </context-param>
     <context-param>
         <param-name>properties-file</param-name>
         <param-value>

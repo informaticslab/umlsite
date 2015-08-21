@@ -22,6 +22,8 @@
 <%@ page import="gov.nih.nlm.uts.webservice.security.*" %>
 <%@ page import="gov.nih.nlm.uts.webservice.semnet.*" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Iterator" %>
 
 
 <%
@@ -61,20 +63,24 @@
     String singleUseTicket0 = securityService.getProxyTicket(ticketGrantingTicket, serviceName);
 
     umlsRelease = utsMetaController.getCurrentUMLSVersion(singleUseTicket0);
-    //System.out.println(umlsRelease);
     String singleUseTicket1 = securityService.getProxyTicket(ticketGrantingTicket, serviceName);
-  //File file ;
-  //String filePath = context.getInitParameter("file-upload");
- // String fileName = request.getParameter("file");
   String term1 = request.getParameter("term1");
- // String downloadPath = context.getInitParameter("image-home");
+
 
     gov.nih.nlm.uts.webservice.finder.Psf myPsf = new gov.nih.nlm.uts.webservice.finder.Psf();
-    myPsf.setPageLn(1000);
+    myPsf.setPageLn(2000);
     List<UiLabel> myUiLabels = new ArrayList<UiLabel>();
 
     UtsWsFinderController UtsFinderService = (new UtsWsFinderControllerImplService()).getUtsWsFinderControllerImplPort();
     myUiLabels = UtsFinderService.findConcepts(singleUseTicket1, umlsRelease, "atom", term1,  "words", myPsf);
+
+    String term2 = request.getParameter("term2");
+    List<UiLabel> myUiLabels2 = new ArrayList<UiLabel>();
+    String singleUseTicket2 = securityService.getProxyTicket(ticketGrantingTicket, serviceName);
+    myUiLabels2 = UtsFinderService.findConcepts(singleUseTicket2, umlsRelease, "atom", term2,  "words", myPsf);
+
+
+
  %>
 
     <html>
@@ -86,12 +92,38 @@
     <div class="top-nav"><div class="cdc-logo"><img src="cdc.png"></div></div>
     <div class="container">
     <%
-     if(!myUiLabels.isEmpty())
-     {
+        HashMap<String, String> setDump = new HashMap<String, String>();
+
+        %>
+        The number of results returned for "<%=term1%>" is <%=myUiLabels.size()%> and
+        the number of results returned for "<%=term2%>" is <%=myUiLabels2.size()%> <br> <br>
+        <%
+     if(!myUiLabels2.isEmpty() && !myUiLabels.isEmpty()) {
+         HashMap<String, String> listDump = new HashMap<String, String>();
+
+         for (int i = 0; i < myUiLabels2.size(); i++) {
+             UiLabel myUiLabel = myUiLabels2.get(i);
+             String ui = myUiLabel.getUi();
+             String label = myUiLabel.getLabel();
+             listDump.put(ui, label);
+         }
          for (int i = 0; i < myUiLabels.size(); i++) {
              UiLabel myUiLabel = myUiLabels.get(i);
              String ui = myUiLabel.getUi();
              String label = myUiLabel.getLabel();
+             if (listDump.containsKey(ui)) {
+                 setDump.put(ui, label);
+             }
+         }
+     }
+            if(!setDump.isEmpty())
+            {
+
+                Iterator<String> seti = setDump.keySet().iterator();
+                while(seti.hasNext())
+                {
+                    String ui = seti.next();
+                    String label = setDump.get(ui);
              %>
            UI: <%=ui%> Label: <%=label%> <br>
         <%
